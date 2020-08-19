@@ -11,6 +11,7 @@ import { useInView } from 'react-intersection-observer';
 import './styles.css';
 
 function App() {
+  const scrollRef = useRef();
   const { scrollY } = useViewportScroll();
   console.log(scrollY);
   let y1 = useTransform(scrollY, [0, 471], [0, 471]);
@@ -40,7 +41,10 @@ function App() {
   // }, [scrollY]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div
+      style={{ display: 'flex', flexDirection: 'column', width: '100%' }}
+      ref={scrollRef}
+    >
       <motion.div className='box1' style={{ y: y1 }} />
       <motion.div className='box2' style={{ y: y2 }} />
       <motion.div className='box3' style={{ y: y3 }} />
